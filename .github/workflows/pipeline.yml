@@ -15,4 +15,4 @@ jobs:
       - name: login to docker
         run: docker login -u ranish07 -p dckr_pat_lUk0nqPmY68GP7EqczDyabE81bY
 
-      -  run: docker push ranish.07/ghimireranish:action-nginx 
+      -  run: docker push ranish07/ghimireranish:action-nginx 
