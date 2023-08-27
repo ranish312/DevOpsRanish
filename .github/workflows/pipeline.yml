@@ -8,3 +8,11 @@ jobs:
     runs-on: [self-hosted, testrunner] 
     steps:
       - uses: actions/checkout@v3
+
+      - name: docker build nginx helloworld
+        run: docker build -t ranish07/ghimireranish:action-nginx NGINXDOCKER/
+        
+      - name: login to docker
+        run: docker login -u ranish07 -p dckr_pat_lUk0nqPmY68GP7EqczDyabE81bY
+
+      -  run: docker push ranish.07/ghimireranish:action-nginx 
