@@ -20,12 +20,12 @@ jobs:
         
         -  run: docker push ranish07/ghimireranish:action-nginx 
 
-deploy:staging:
-    runs on: [self-hosted, testrunner]
-    needs: staging_build
-    steps:
-        - name: pull docker images
-          run: docker pull ranish07/ghimireranish:staging
+    deploy_staging:
+        runs-on: [self-hosted, testrunner]
+        needs: staging_build
+        steps:
+            - name: pull docker images
+              run: docker pull ranish07/ghimireranish:staging
 
-        - name: run staging image 
-          run: docker run -d -p 3000:80 ranish07/ghimireranish:staging
+            - name: run staging image 
+              run: docker run -d -p 3000:80 ranish07/ghimireranish:staging
