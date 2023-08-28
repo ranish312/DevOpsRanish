@@ -1,0 +1,36 @@
+<<<<<<< Updated upstream
+=======
+name: STAGING CI
+
+on: 
+    pull_request:
+        branches: ["staging"]
+        types: ["closed"]
+
+
+jobs:
+    staging_build:
+        runs-on: [self-hosted, testrunner] 
+        steps:
+        - uses: actions/checkout@v3
+        
+        - name: docker build nginx helloworld
+          run: docker build -t ranish07/ghimireranish:action-nginx NGINXDOCKER/
+            
+        - name: login to docker
+          run: docker login -u ranish07 -p ${{secrets.DOCKER_PASSWORD}}
+        
+        -  run: docker push ranish07/ghimireranish:action-nginx 
+
+deploy:staging:
+    runs on: [self-hosted, testrunner]
+    needs: staging_build
+    steps:
+        - name: pull docker images
+          run: docker pull ranish07/ghimireranish:staging
+
+        - name: run staging image 
+          run: docker run -d -p 3000:80 ranish07/ghimireranish:staging
+
+          
+>>>>>>> Stashed changes
