@@ -13,12 +13,12 @@ jobs:
         - uses: actions/checkout@v3
         
         - name: docker build nginx helloworld
-          run: docker build -t ranish07/ghimireranish:action-nginx NGINXDOCKER/
+          run: docker build -t ranish07/ghimireranish:staging NGINXDOCKER/
             
         - name: login to docker
           run: docker login -u ranish07 -p ${{secrets.DOCKER_PASSWORD}}
         
-        -  run: docker push ranish07/ghimireranish:action-nginx 
+        -  run: docker push ranish07/ghimireranish:staging 
 
     deploy_staging:
         runs-on: [self-hosted, testrunner]
