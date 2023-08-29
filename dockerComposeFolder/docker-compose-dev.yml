@@ -1,0 +1,19 @@
+services: 
+  helloworld: 
+    image: hellonode:18-alpine
+    build: ../Hellonode
+    ports: 
+    - 3000:3000
+
+  hellonginx: 
+    image: hellonginx:alpine
+    build : ../NGINXDOCKER
+    ports: 
+        - 3001:80
+
+  loadbalancing:
+    image: nginx:latest
+    ports:
+      -80:80
+    volumes:
+      -../loadbalancing.conf:/etc/nginx/conf.d/default.conf
