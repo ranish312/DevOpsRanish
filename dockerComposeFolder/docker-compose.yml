@@ -1,0 +1,10 @@
+services: 
+  helloworld: 
+    image: hellonode:18-alpine
+    deploy: 
+      replicas: 4
+
+  hellonginx: 
+    image: hellonginx:alpine
+    ports: 
+        - 3001:80
