@@ -28,6 +28,6 @@ jobs:
               run: docker pull ranish07/ghimireranish:staging
 
             - name: run staging image 
-              run: docker run -d -p 3000:80 ranish07/ghimireranish:staging
+              run: docker run -d -p 3001:80 ranish07/ghimireranish:staging
 
               #heelloo
