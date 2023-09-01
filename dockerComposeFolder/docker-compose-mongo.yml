@@ -1,0 +1,26 @@
+services:
+  database:
+    image: mongo
+    restart: always
+    # ports:
+    #   - 3307:3307
+    volumes:
+      - ../mongo:/data/db
+    ebv_file:
+      - ../mongo_env_file
+    environment:
+      - TZ=Asia/Kathmandu
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on: 
+      - database
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=ranish
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=ranish
+      # - ME_CONFIG_MONGODB_URL="mongodb://ranish:ranish@database:27017/"
+      - ME_CONFIG_MONGODB_SERVER=database
+      - ME_CONFIG_MONGODB_PORT=27017
