@@ -7,7 +7,7 @@ on:
 
 jobs:
     deploy_mongo:
-        runs-on: ["self-hosted, testrunner"]
+        runs-on: [self-hosted, testrunner]
         steps: 
             - uses: actions/checkout@v3
 
