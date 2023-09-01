@@ -1,0 +1,21 @@
+name: DATABASE test CD
+
+on: 
+    pull_request: 
+        branches: ["staging"]
+        types: ["closed"]
+
+jobs:
+    deploy_mongo:
+        runs-on: ["self-hosted, testrunner"]
+        steps: 
+            - uses: actions/checkout@v3
+
+            - name: create environment
+            - run: echo '${{secrets.MONGO_ENV_FILE}}' > mongo_env_file
+
+            - name: pull docker images
+            - run: docker compose --file dockerComposseFolder/docker-compose-mongo.yml pull
+
+            - name: run docker containers
+            - run: docker compose --file dockerComposseFolder/docker-compose-mongo.yml up -d
