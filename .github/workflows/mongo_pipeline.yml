@@ -15,7 +15,7 @@ jobs:
               run: echo '${{secrets.MONGO_ENV_FILE}}' > mongo_env_file
 
             - name: pull docker images
-              run: docker compose --file dockerComposseFolder/docker-compose-mongo.yml pull
+              run: docker compose --file dockerComposeFolder/docker-compose-mongo.yml pull
 
             - name: run docker containers
-              run: docker compose --file dockerComposseFolder/docker-compose-mongo.yml up -d
+              run: docker compose --file dockerComposeFolder/docker-compose-mongo.yml up -d
